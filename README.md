@@ -131,3 +131,9 @@ Compile To
   return arg
 })('hello Macro')
 ```
+
+## Known Issues
+
+### 1. HMR
+
+This stage not handle `HMR`, so will not update when you change the macro body.
