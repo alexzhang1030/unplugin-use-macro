@@ -1,24 +1,22 @@
 {
-  "name": "unplugin-starter",
+  "name": "unplugin-use-macro",
   "type": "module",
-  "version": "0.1.0",
-  "packageManager": "pnpm@7.1.1",
-  "description": "Register global imports on demand for Vite and Webpack",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.9.0",
+  "description": "Register macro and use",
   "license": "MIT",
-  "homepage": "https://github.com/antfu/unplugin-starter#readme",
+  "homepage": "https://github.com/alexzhang1030/unplugin-use-macro#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/unplugin-starter.git"
+    "url": "git+https://github.com/alexzhang1030/unplugin-use-macro.git"
   },
   "bugs": {
-    "url": "https://github.com/antfu/unplugin-starter/issues"
+    "url": "https://github.com/alexzhang1030/unplugin-use-macro/issues"
   },
   "keywords": [
     "unplugin",
-    "vite",
-    "webpack",
-    "rollup",
-    "transform"
+    "macro",
+    "acorn"
   ],
   "exports": {
     ".": {
@@ -81,26 +79,34 @@
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
-    "test": "vitest"
+    "s": "esno src/core/index.ts",
+    "test": "vitest",
+    "up": "taze -r -I major"
   },
   "dependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/generator": "^7.20.7",
+    "magic-string": "^0.27.0",
     "unplugin": "^1.0.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.33.1",
-    "@types/node": "^18.11.13",
+    "@antfu/eslint-config": "^0.34.0",
+    "@babel/types": "^7.20.7",
+    "@types/babel__core": "^7.1.20",
+    "@types/node": "^18.11.17",
     "bumpp": "^8.2.1",
     "chalk": "^5.2.0",
-    "eslint": "^8.29.0",
+    "eslint": "^8.30.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
     "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
-    "rollup": "^3.7.3",
+    "rollup": "^3.8.1",
+    "taze": "^0.8.5",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",
-    "vite": "^4.0.0",
-    "vitest": "^0.25.7",
+    "vite": "^4.0.3",
+    "vitest": "^0.26.2",
     "webpack": "^5.75.0"
   }
 }

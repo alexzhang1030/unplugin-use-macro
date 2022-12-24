@@ -1,28 +1,14 @@
-# unplugin-starter
+# unplugin-use-macro
 
-[![NPM version](https://img.shields.io/npm/v/unplugin-starter?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-starter)
+> **Note**
+> This project is in alpha stage, and is not ready for production use.
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
-
-## Template Usage
-
-To use this template, clone it down using:
-
-```bash
-npx degit antfu/unplugin-starter my-unplugin
-```
-
-And do a global replace of `unplugin-starter` with your plugin name.
-
-Then you can start developing your unplugin 🔥
-
-To test your plugin, run: `pnpm run dev`
-To release a new version, run: `pnpm run release`
+[![NPM version](https://img.shields.io/npm/v/unplugin-use-macro?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-use-macro)
 
 ## Install
 
 ```bash
-npm i unplugin-starter
+pnpm i -D unplugin-use-macro
 ```
 
 <details>
@@ -30,11 +16,11 @@ npm i unplugin-starter
 
 ```ts
 // vite.config.ts
-import Starter from 'unplugin-starter/vite'
+import UseMacro from 'unplugin-use-macro/vite'
 
 export default defineConfig({
   plugins: [
-    Starter({ /* options */ }),
+    UseMacro({/* options */}),
   ],
 })
 ```
@@ -48,17 +34,16 @@ Example: [`playground/`](./playground/)
 
 ```ts
 // rollup.config.js
-import Starter from 'unplugin-starter/rollup'
+import UseMacro from 'unplugin-use-macro/vite'
 
 export default {
   plugins: [
-    Starter({ /* options */ }),
+    UseMacro({ /* options */ }),
   ],
 }
 ```
 
 <br></details>
-
 
 <details>
 <summary>Webpack</summary><br>
@@ -68,7 +53,7 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require('unplugin-starter/webpack')({ /* options */ })
+    require('unplugin-use-macro/webpack')({ /* options */ })
   ]
 }
 ```
@@ -82,7 +67,7 @@ module.exports = {
 // nuxt.config.js
 export default {
   buildModules: [
-    ['unplugin-starter/nuxt', { /* options */ }],
+    ['unplugin-use-macro/nuxt', { /* options */ }],
   ],
 }
 ```
@@ -99,7 +84,7 @@ export default {
 module.exports = {
   configureWebpack: {
     plugins: [
-      require('unplugin-starter/webpack')({ /* options */ }),
+      require('unplugin-use-macro/webpack')({ /* options */ }),
     ],
   },
 }
@@ -113,11 +98,36 @@ module.exports = {
 ```ts
 // esbuild.config.js
 import { build } from 'esbuild'
-import Starter from 'unplugin-starter/esbuild'
+import UseMacro from 'unplugin-use-macro/esbuild'
 
 build({
-  plugins: [Starter()],
+  plugins: [UseMacro()],
 })
 ```
 
 <br></details>
+
+## Usage
+
+Define a macro and then use it after defined.
+
+```ts
+// Define by using `useMacro`
+useMacro('myMacro', (arg) => {
+  return arg
+})
+
+// Using by `label` statement, but will be compiled
+// `$` suffix is necessary
+myMacro$: {
+  'Hello Macro'
+}
+```
+
+Compile To
+
+```js
+((arg) => {
+  return arg
+})('hello Macro')
+```

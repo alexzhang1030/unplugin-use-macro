@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`valid id > valid id > .png 1`] = `false`;
+
+exports[`valid id > valid id > js 1`] = `true`;
+
+exports[`valid id > valid id > jsx 1`] = `true`;
+
+exports[`valid id > valid id > svelte 1`] = `true`;
+
+exports[`valid id > valid id > ts 1`] = `true`;
+
+exports[`valid id > valid id > tsx 1`] = `true`;
+
+exports[`valid id > valid id > vue 1`] = `true`;

@@ -1,12 +1,14 @@
 import { createUnplugin } from 'unplugin'
+import { parse } from './core'
 import type { Options } from './types'
+import { isValidId } from './utils'
 
-export default createUnplugin<Options | undefined>(options => ({
-  name: 'unplugin-starter',
+export default createUnplugin<Options | undefined>(() => ({
+  name: 'unplugin-use-macro',
   transformInclude(id) {
-    return id.endsWith('main.ts')
+    return isValidId(id)
   },
   transform(code) {
-    return code.replace('__UNPLUGIN__', `Hello Unplugin! ${options}`)
+    return parse(code)
   },
 }))
