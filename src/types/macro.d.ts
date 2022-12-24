@@ -1,5 +1,5 @@
 // Only for types
 export {}
 declare global {
-  const useMacro: (_: string, __: (...args: unknown[]) => void) => {}
+  const useMacro: (macroName: string, macroBody: (...args: any[]) => void) => {}
 }

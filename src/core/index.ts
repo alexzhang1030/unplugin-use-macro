@@ -17,8 +17,6 @@ export function parse(code: string) {
         const { name, body } = getBodyAndName(path.get('arguments'))
         if (!Macros.has(name.node.value))
           Macros.set(name.node.value, body)
-        else
-          console.warn(`Duplicate macro define: ${name}`)
         codeMs.remove(path.node.start!, path.node.end!)
         insertPos = path.node.start!
       }
