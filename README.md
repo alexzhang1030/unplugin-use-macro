@@ -34,7 +34,7 @@ Example: [`playground/`](./playground/)
 
 ```ts
 // rollup.config.js
-import UseMacro from 'unplugin-use-macro/vite'
+import UseMacro from 'unplugin-use-macro/rollup'
 
 export default {
   plugins: [
