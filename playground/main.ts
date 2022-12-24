@@ -1,6 +1,6 @@
 document.getElementById('app')!.innerHTML = '__UNPLUGIN__'
 
-useMacro('log', (node) => {
+useMarco('log', (node) => {
   console.log(node)
 })
 

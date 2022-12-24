@@ -12,7 +12,7 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "types": [
-      "../dist/macro.d"
+      "unplugin-use-macro/macro"
     ]
   },
 }

@@ -53,9 +53,11 @@ importers:
 
   playground:
     specifiers:
+      unplugin-use-macro: '*'
       vite: ^4.0.3
       vite-plugin-inspect: ^0.7.11
     devDependencies:
+      unplugin-use-macro: link:..
       vite: 4.0.3
       vite-plugin-inspect: 0.7.11_vite@4.0.3
 
