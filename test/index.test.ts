@@ -10,25 +10,42 @@ describe('valid id', () => {
   })
   it('test', () => {
     const code = `
-      useMacro("log", ($1, $2) => {
-        console.log($2, $1)
-      })
-
-      log$: {
-        "hello world",
-        "next world"
-      };
+const _sfc_main = /* @__PURE__ */ _defineComponent({
+  __name: "App",
+  setup(__props, { expose }) {
+    expose();
+    useMacro("log", (p) => {
+      console.log({ p });
+    });
+    log$: {
+      "hello world";
+    }
+    const __returned__ = { HelloWorld };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
+  }
+});
     `
     expect(parse(code)!).toMatchInlineSnapshot(`
       "
-            
-
+      const _sfc_main = /* @__PURE__ */ _defineComponent({
+        __name: \\"App\\",
+        setup(__props, { expose }) {
+          expose();
+          
+              (p => {
+        console.log({
+          p
+        });
+      })(\\"hello world\\")
             ;
           
-              (($1, $2) => {
-        console.log($2, $1);
-      })(\\"hello world\\", \\"next world\\")
-            "
+          const __returned__ = { HelloWorld };
+          Object.defineProperty(__returned__, \\"__isScriptSetup\\", { enumerable: false, value: true });
+          return __returned__;
+        }
+      });
+          "
     `)
   })
 })

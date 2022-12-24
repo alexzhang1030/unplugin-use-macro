@@ -7,6 +7,7 @@ import { getBodyAndName, isDefineMacro } from '../utils'
 export const Macros = new Map<string, NodePath<ArrowFunctionExpression>>()
 
 export function parse(code: string) {
+  let insertPos = 0
   const ast = parseSync(code)
   const codeMs = new Ms(code)
   traverse(ast, {
@@ -19,6 +20,7 @@ export function parse(code: string) {
         else
           console.warn(`Duplicate macro define: ${name}`)
         codeMs.remove(path.node.start!, path.node.end!)
+        insertPos = path.node.start!
       }
     },
     LabeledStatement(path) {
@@ -32,7 +34,7 @@ export function parse(code: string) {
       const callMacroBody = path.get('body')
       if (macroBody) {
         const params = callMacroBody.toString().replaceAll('\n', '').slice(1, -2).trim()
-        codeMs.append(`
+        codeMs.appendRight(insertPos, `
         (${macroBody?.toString()})(${params})
       `)
       }
