@@ -132,6 +132,21 @@ Compile To
 })('hello Macro')
 ```
 
+## Type
+
+```json5
+// tsconfig.json
+{
+  "compilerOptions": {
+    // ...other options
+    "types": [
+      "unplugin-use-macro/macro"
+      // other types
+    ]
+  }
+}
+```
+
 ## Known Issues
 
 ### 1. HMR
